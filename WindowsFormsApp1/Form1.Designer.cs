@@ -36,11 +36,12 @@
             this.dbrOffBtn = new System.Windows.Forms.Button();
             this.dbrOnBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.restoreBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bitrateTextBox
             // 
-            this.bitrateTextBox.Location = new System.Drawing.Point(332, 46);
+            this.bitrateTextBox.Location = new System.Drawing.Point(318, 46);
             this.bitrateTextBox.Name = "bitrateTextBox";
             this.bitrateTextBox.Size = new System.Drawing.Size(100, 28);
             this.bitrateTextBox.TabIndex = 0;
@@ -50,7 +51,7 @@
             // 
             // dbmTextBox
             // 
-            this.dbmTextBox.Location = new System.Drawing.Point(332, 317);
+            this.dbmTextBox.Location = new System.Drawing.Point(318, 317);
             this.dbmTextBox.Name = "dbmTextBox";
             this.dbmTextBox.Size = new System.Drawing.Size(100, 28);
             this.dbmTextBox.TabIndex = 1;
@@ -62,7 +63,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(202, 46);
+            this.label1.Location = new System.Drawing.Point(188, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(124, 25);
             this.label1.TabIndex = 5;
@@ -71,7 +72,7 @@
             // hevcOffBtn
             // 
             this.hevcOffBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hevcOffBtn.Location = new System.Drawing.Point(202, 100);
+            this.hevcOffBtn.Location = new System.Drawing.Point(188, 100);
             this.hevcOffBtn.Name = "hevcOffBtn";
             this.hevcOffBtn.Size = new System.Drawing.Size(109, 47);
             this.hevcOffBtn.TabIndex = 8;
@@ -82,7 +83,7 @@
             // hevcOnBtn
             // 
             this.hevcOnBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hevcOnBtn.Location = new System.Drawing.Point(327, 100);
+            this.hevcOnBtn.Location = new System.Drawing.Point(313, 100);
             this.hevcOnBtn.Name = "hevcOnBtn";
             this.hevcOnBtn.Size = new System.Drawing.Size(109, 47);
             this.hevcOnBtn.TabIndex = 10;
@@ -93,7 +94,7 @@
             // dbrOffBtn
             // 
             this.dbrOffBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dbrOffBtn.Location = new System.Drawing.Point(202, 166);
+            this.dbrOffBtn.Location = new System.Drawing.Point(188, 166);
             this.dbrOffBtn.Name = "dbrOffBtn";
             this.dbrOffBtn.Size = new System.Drawing.Size(196, 47);
             this.dbrOffBtn.TabIndex = 11;
@@ -104,7 +105,7 @@
             // dbrOnBtn
             // 
             this.dbrOnBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dbrOnBtn.Location = new System.Drawing.Point(202, 230);
+            this.dbrOnBtn.Location = new System.Drawing.Point(188, 230);
             this.dbrOnBtn.Name = "dbrOnBtn";
             this.dbrOnBtn.Size = new System.Drawing.Size(196, 47);
             this.dbrOnBtn.TabIndex = 12;
@@ -116,17 +117,29 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(91, 315);
+            this.label2.Location = new System.Drawing.Point(77, 315);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(235, 25);
             this.label2.TabIndex = 13;
             this.label2.Text = "Dynamic Bitrate Max (Mbps)";
             // 
+            // restoreBtn
+            // 
+            this.restoreBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.restoreBtn.Location = new System.Drawing.Point(27, 377);
+            this.restoreBtn.Name = "restoreBtn";
+            this.restoreBtn.Size = new System.Drawing.Size(544, 90);
+            this.restoreBtn.TabIndex = 14;
+            this.restoreBtn.Text = "Restore All\r\n(delete BitrateMbps, HEVC, DBR, DBRMax registry keys)";
+            this.restoreBtn.UseVisualStyleBackColor = true;
+            this.restoreBtn.Click += new System.EventHandler(this.restoreBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 397);
+            this.ClientSize = new System.Drawing.Size(597, 523);
+            this.Controls.Add(this.restoreBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dbrOnBtn);
             this.Controls.Add(this.dbrOffBtn);
@@ -136,7 +149,7 @@
             this.Controls.Add(this.dbmTextBox);
             this.Controls.Add(this.bitrateTextBox);
             this.Name = "Form1";
-            this.Text = "Meta Quest Bitrate Registry Editor 0.1.0";
+            this.Text = "Meta Quest Bitrate Registry Editor 0.1.1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Click += new System.EventHandler(this.Form1_Click);
             this.ResumeLayout(false);
@@ -154,6 +167,7 @@
         private System.Windows.Forms.Button dbrOffBtn;
         private System.Windows.Forms.Button dbrOnBtn;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button restoreBtn;
     }
 }
 

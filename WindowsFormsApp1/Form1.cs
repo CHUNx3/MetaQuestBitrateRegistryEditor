@@ -95,5 +95,37 @@ namespace WindowsFormsApp1
             Registry.SetValue(OculusRegKey, DbrValueName, 1);
 
         }
+
+        private void restoreBtn_Click(object sender, EventArgs e)
+        {
+            RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\\Oculus\\RemoteHeadset", true);
+
+            if (key == null)
+            {
+                return;
+            }
+
+            if (key.GetValue(BitrateMbpsValueName) != null)
+            {
+                key.DeleteValue(BitrateMbpsValueName);
+            }
+
+            if (key.GetValue(HevcValueName) != null)
+            {
+                key.DeleteValue(HevcValueName);
+            }
+
+            if (key.GetValue(DbrValueName) != null)
+            {
+                key.DeleteValue(DbrValueName);
+            }
+
+            if (key.GetValue(DbrMaxValueName) != null)
+            {
+                key.DeleteValue(DbrMaxValueName);
+            }
+
+            key?.Close();
+        }
     }
 }
