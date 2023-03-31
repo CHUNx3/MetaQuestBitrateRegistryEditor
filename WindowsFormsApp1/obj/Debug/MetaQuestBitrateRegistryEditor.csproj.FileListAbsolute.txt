@@ -1,0 +1,11 @@
+C:\Users\a\source\repos\MetaQuestBitrateRegistryEditor\WindowsFormsApp1\bin\Debug\MetaQuestBitrateRegistryEditor.exe.config
+C:\Users\a\source\repos\MetaQuestBitrateRegistryEditor\WindowsFormsApp1\bin\Debug\MetaQuestBitrateRegistryEditor.exe
+C:\Users\a\source\repos\MetaQuestBitrateRegistryEditor\WindowsFormsApp1\bin\Debug\MetaQuestBitrateRegistryEditor.pdb
+C:\Users\a\source\repos\MetaQuestBitrateRegistryEditor\WindowsFormsApp1\obj\Debug\MetaQuestBitrateRegistryEditor.csproj.AssemblyReference.cache
+C:\Users\a\source\repos\MetaQuestBitrateRegistryEditor\WindowsFormsApp1\obj\Debug\MetaQuestBitrateRegistryEditor.csproj.SuggestedBindingRedirects.cache
+C:\Users\a\source\repos\MetaQuestBitrateRegistryEditor\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\a\source\repos\MetaQuestBitrateRegistryEditor\WindowsFormsApp1\obj\Debug\MetaQuestBitrateRegistryEditor.Properties.Resources.resources
+C:\Users\a\source\repos\MetaQuestBitrateRegistryEditor\WindowsFormsApp1\obj\Debug\MetaQuestBitrateRegistryEditor.csproj.GenerateResource.cache
+C:\Users\a\source\repos\MetaQuestBitrateRegistryEditor\WindowsFormsApp1\obj\Debug\MetaQuestBitrateRegistryEditor.csproj.CoreCompileInputs.cache
+C:\Users\a\source\repos\MetaQuestBitrateRegistryEditor\WindowsFormsApp1\obj\Debug\MetaQuestBitrateRegistryEditor.exe
+C:\Users\a\source\repos\MetaQuestBitrateRegistryEditor\WindowsFormsApp1\obj\Debug\MetaQuestBitrateRegistryEditor.pdb
