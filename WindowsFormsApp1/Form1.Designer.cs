@@ -37,6 +37,7 @@
             this.dbrOnBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.restoreBtn = new System.Windows.Forms.Button();
+            this.aswOffBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bitrateTextBox
@@ -96,7 +97,7 @@
             this.dbrOffBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dbrOffBtn.Location = new System.Drawing.Point(188, 166);
             this.dbrOffBtn.Name = "dbrOffBtn";
-            this.dbrOffBtn.Size = new System.Drawing.Size(196, 47);
+            this.dbrOffBtn.Size = new System.Drawing.Size(230, 47);
             this.dbrOffBtn.TabIndex = 11;
             this.dbrOffBtn.Text = "Dynamic Bitrate off";
             this.dbrOffBtn.UseVisualStyleBackColor = true;
@@ -107,7 +108,7 @@
             this.dbrOnBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dbrOnBtn.Location = new System.Drawing.Point(188, 230);
             this.dbrOnBtn.Name = "dbrOnBtn";
-            this.dbrOnBtn.Size = new System.Drawing.Size(196, 47);
+            this.dbrOnBtn.Size = new System.Drawing.Size(230, 47);
             this.dbrOnBtn.TabIndex = 12;
             this.dbrOnBtn.Text = "Dynamic Bitrate on";
             this.dbrOnBtn.UseVisualStyleBackColor = true;
@@ -126,7 +127,7 @@
             // restoreBtn
             // 
             this.restoreBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.restoreBtn.Location = new System.Drawing.Point(27, 377);
+            this.restoreBtn.Location = new System.Drawing.Point(22, 451);
             this.restoreBtn.Name = "restoreBtn";
             this.restoreBtn.Size = new System.Drawing.Size(544, 90);
             this.restoreBtn.TabIndex = 14;
@@ -134,11 +135,23 @@
             this.restoreBtn.UseVisualStyleBackColor = true;
             this.restoreBtn.Click += new System.EventHandler(this.restoreBtn_Click);
             // 
+            // aswOffBtn
+            // 
+            this.aswOffBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aswOffBtn.Location = new System.Drawing.Point(188, 371);
+            this.aswOffBtn.Name = "aswOffBtn";
+            this.aswOffBtn.Size = new System.Drawing.Size(230, 47);
+            this.aswOffBtn.TabIndex = 15;
+            this.aswOffBtn.Text = "ASW off";
+            this.aswOffBtn.UseVisualStyleBackColor = true;
+            this.aswOffBtn.Click += new System.EventHandler(this.aswOffBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 523);
+            this.ClientSize = new System.Drawing.Size(597, 703);
+            this.Controls.Add(this.aswOffBtn);
             this.Controls.Add(this.restoreBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dbrOnBtn);
@@ -168,6 +181,7 @@
         private System.Windows.Forms.Button dbrOnBtn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button restoreBtn;
+        private System.Windows.Forms.Button aswOffBtn;
     }
 }
 
