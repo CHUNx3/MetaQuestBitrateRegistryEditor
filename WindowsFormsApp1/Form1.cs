@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,11 +60,14 @@ namespace WindowsFormsApp1
             {
                 e.Handled = true;
             }
-        }        
+        }
 
         private void bitrateTextBox_Leave(object sender, EventArgs e)
         {
-            Registry.SetValue(OculusRegKey, BitrateMbpsValueName, int.Parse(bitrateTextBox.Text));
+            if (!String.IsNullOrEmpty(bitrateTextBox.Text))
+            {
+                Registry.SetValue(OculusRegKey, BitrateMbpsValueName, int.Parse(bitrateTextBox.Text));
+            }            
         }
 
         private void dbmTextBox_Leave(object sender, EventArgs e)
@@ -126,6 +131,27 @@ namespace WindowsFormsApp1
             }
 
             key?.Close();
+        }
+
+        private void aswOffBtn_Click(object sender, EventArgs e)
+        {
+            // Replace "command" with your actual shell command and arguments
+            string command = "echo server:asw.Off | \"C:\\Program Files\\Oculus\\Support\\oculus-diagnostics\\OculusDebugToolCLI.exe\"";
+
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/c " + command; // "/c" flag tells cmd to execute the command and exit
+            startInfo.UseShellExecute = false;
+            startInfo.RedirectStandardOutput = true;
+
+            using (Process process = Process.Start(startInfo))
+            {
+                using (StreamReader reader = process.StandardOutput)
+                {
+                    string result = reader.ReadToEnd();
+                    MessageBox.Show(result); // Display the output in a message box
+                }
+            }
         }
     }
 }
