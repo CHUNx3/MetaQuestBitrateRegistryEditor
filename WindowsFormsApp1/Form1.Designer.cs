@@ -131,7 +131,7 @@
             this.restoreBtn.Name = "restoreBtn";
             this.restoreBtn.Size = new System.Drawing.Size(544, 90);
             this.restoreBtn.TabIndex = 14;
-            this.restoreBtn.Text = "Restore All\r\n(delete BitrateMbps, HEVC, DBR, DBRMax registry keys)";
+            this.restoreBtn.Text = "Restore All\r\n(delete BitrateMbps, HEVC, DBR, DBRMax registry values)";
             this.restoreBtn.UseVisualStyleBackColor = true;
             this.restoreBtn.Click += new System.EventHandler(this.restoreBtn_Click);
             // 
@@ -162,7 +162,7 @@
             this.Controls.Add(this.dbmTextBox);
             this.Controls.Add(this.bitrateTextBox);
             this.Name = "Form1";
-            this.Text = "Meta Quest Bitrate Registry Editor 0.1.1";
+            this.Text = "Meta Quest Bitrate Registry Editor 0.1.2";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Click += new System.EventHandler(this.Form1_Click);
             this.ResumeLayout(false);
