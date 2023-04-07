@@ -1,42 +1,64 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Windows.Forms.VisualStyles;
 
 namespace WindowsFormsApp1
 {
+
     public partial class Form1 : Form
     {
         private const string OculusRegKey = "HKEY_CURRENT_USER\\SOFTWARE\\Oculus\\RemoteHeadset";
+        private const string OdtCli = "C:\\Program Files\\Oculus\\Support\\oculus-diagnostics\\OculusDebugToolCLI.exe\"";
         private const string BitrateMbpsValueName = "BitrateMbps";
         private const string HevcValueName = "HEVC";
-        private const string DbrValueName = "DBR";        
-        private const string DbrMaxValueName = "DBRMax";        
+        private const string DbrValueName = "DBR";
+        private const string DbrMaxValueName = "DBRMax";
+
+        private Boolean hevcToggle;
+        private Boolean dbrToggle;
 
         public Form1()
         {
             InitializeComponent();
-            Object bitrateValue = Registry.GetValue(OculusRegKey, BitrateMbpsValueName, null);
 
+            Object bitrateValue = Registry.GetValue(OculusRegKey, BitrateMbpsValueName, null);
             if (bitrateValue != null && bitrateValue is int)
             {
                 bitrateTextBox.Text = bitrateValue.ToString();
             }
 
             Object dbrMaxValue = Registry.GetValue(OculusRegKey, DbrMaxValueName, null);
-
             if (dbrMaxValue != null && dbrMaxValue is int)
             {
                 dbmTextBox.Text = dbrMaxValue.ToString();
+            }
+
+            Object hevcValue = Registry.GetValue(OculusRegKey, HevcValueName, null);
+            if (hevcValue != null && hevcValue is int && int.Parse(hevcValue.ToString()) == 0)
+            {
+                hevcToggle = false;
+                hevcBtn.BackgroundImage = MetaQuestBitrateRegistryEditor.Properties.Resources.off_button;
+            }
+            else
+            {
+                hevcToggle = true;
+                hevcBtn.BackgroundImage = MetaQuestBitrateRegistryEditor.Properties.Resources.on_button;
+            }
+
+            Object dbrValue = Registry.GetValue(OculusRegKey, DbrValueName, null);
+            if (dbrValue != null && dbrValue is int && int.Parse(dbrValue.ToString()) == 1)
+            {
+                dbrValue = true;
+                dbrBtn.BackgroundImage = MetaQuestBitrateRegistryEditor.Properties.Resources.on_button;
+            }
+            else
+            {
+                dbrValue = false;
+                dbrBtn.BackgroundImage = MetaQuestBitrateRegistryEditor.Properties.Resources.off_button;
             }
         }
 
@@ -80,25 +102,46 @@ namespace WindowsFormsApp1
 
         }
 
-        private void hevcOffBtn_Click(object sender, EventArgs e)
+        private void hevcBtn_Click(object sender, EventArgs e)
         {
-            Registry.SetValue(OculusRegKey, HevcValueName, 0);
+            hevcToggle = !hevcToggle;
+            hevcBtn.BackgroundImage = hevcToggle ? MetaQuestBitrateRegistryEditor.Properties.Resources.on_button
+                : MetaQuestBitrateRegistryEditor.Properties.Resources.off_button;
+            Registry.SetValue(OculusRegKey, HevcValueName, hevcToggle ? 1 : 0);
         }
 
-        private void hevcOnBtn_Click(object sender, EventArgs e)
+        private void dbrBtn_Click(object sender, EventArgs e)
         {
-            Registry.SetValue(OculusRegKey, HevcValueName, 1);
+            dbrToggle = !dbrToggle;
+            dbrBtn.BackgroundImage = dbrToggle ? MetaQuestBitrateRegistryEditor.Properties.Resources.on_button
+                : MetaQuestBitrateRegistryEditor.Properties.Resources.off_button;
+            Registry.SetValue(OculusRegKey, DbrValueName, dbrToggle ? 1 : 0);
         }
 
-        private void dbrOffBtn_Click(object sender, EventArgs e)
+        private void perfHudOffBtn_Click(object sender, EventArgs e)
         {
-            Registry.SetValue(OculusRegKey, DbrValueName, 0);
+            string command = "echo perfhud reset | \"" + OdtCli;
+
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/c " + command;
+            startInfo.UseShellExecute = false;
+            startInfo.CreateNoWindow = true;
+
+            Process.Start(startInfo);
         }
 
-        private void dbrOnBtn_Click(object sender, EventArgs e)
+        private void perfHudOnBtn_Click(object sender, EventArgs e)
         {
-            Registry.SetValue(OculusRegKey, DbrValueName, 1);
+            string command = "echo perfhud set-mode 7 | \"" + OdtCli;
 
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/c " + command;
+            startInfo.UseShellExecute = false;
+            startInfo.CreateNoWindow = true;
+
+            Process.Start(startInfo);
         }
 
         private void restoreBtn_Click(object sender, EventArgs e)
@@ -131,27 +174,27 @@ namespace WindowsFormsApp1
             }
 
             key?.Close();
+
+            bitrateTextBox.Text = "";
+            dbmTextBox.Text = "";
+            hevcToggle = true;
+            hevcBtn.BackgroundImage = MetaQuestBitrateRegistryEditor.Properties.Resources.on_button;
+            dbrToggle = false;
+            dbrBtn.BackgroundImage = MetaQuestBitrateRegistryEditor.Properties.Resources.off_button;
         }
 
         private void aswOffBtn_Click(object sender, EventArgs e)
         {
-            // Replace "command" with your actual shell command and arguments
-            string command = "echo server:asw.Off | \"C:\\Program Files\\Oculus\\Support\\oculus-diagnostics\\OculusDebugToolCLI.exe\"";
+            string command = "echo server:asw.Off | \"" + OdtCli;
 
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = "cmd.exe";
             startInfo.Arguments = "/c " + command; // "/c" flag tells cmd to execute the command and exit
             startInfo.UseShellExecute = false;
             startInfo.RedirectStandardOutput = true;
+            startInfo.CreateNoWindow = true;
 
-            using (Process process = Process.Start(startInfo))
-            {
-                using (StreamReader reader = process.StandardOutput)
-                {
-                    string result = reader.ReadToEnd();
-                    MessageBox.Show(result); // Display the output in a message box
-                }
-            }
+            Process.Start(startInfo);
         }
     }
 }
