@@ -1,10 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Diagnostics;
-using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace WindowsFormsApp1
 {
@@ -17,6 +14,7 @@ namespace WindowsFormsApp1
         private const string HevcValueName = "HEVC";
         private const string DbrValueName = "DBR";
         private const string DbrMaxValueName = "DBRMax";
+        private const string SharpeningValueName = "LinkSharpeningEnabled";
 
         private Boolean hevcToggle;
         private Boolean dbrToggle;
@@ -59,6 +57,25 @@ namespace WindowsFormsApp1
             {
                 dbrValue = false;
                 dbrBtn.BackgroundImage = MetaQuestBitrateRegistryEditor.Properties.Resources.off_button;
+            }
+
+            Object sharpeningValue = Registry.GetValue(OculusRegKey, SharpeningValueName, null);
+            if (sharpeningValue != null && sharpeningValue is int)
+            {
+                string sharpeningStrValue;
+                if ((int) sharpeningValue == 1)
+                {
+                    sharpeningStrValue = "Disabled";
+                }
+                else if ((int)sharpeningValue == 2)
+                {
+                    sharpeningStrValue = "Normal";
+                }
+                else
+                {
+                    sharpeningStrValue = "Quality";
+                }
+                sharpeningComboBox.SelectedItem = sharpeningStrValue;
             }
         }
 
@@ -144,6 +161,7 @@ namespace WindowsFormsApp1
             Process.Start(startInfo);
         }
 
+
         private void restoreBtn_Click(object sender, EventArgs e)
         {
             RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\\Oculus\\RemoteHeadset", true);
@@ -195,6 +213,24 @@ namespace WindowsFormsApp1
             startInfo.CreateNoWindow = true;
 
             Process.Start(startInfo);
+        }
+
+        private void sharpeningComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedValue = sharpeningComboBox.SelectedItem.ToString();
+            int sharpeningValue;
+            if (selectedValue.Equals("Disabled"))
+            {
+                sharpeningValue = 1;
+            }
+            else if (selectedValue.Equals("Normal"))
+            {
+                sharpeningValue = 2;
+            } else
+            {
+                sharpeningValue = 3;
+            }
+            Registry.SetValue(OculusRegKey, SharpeningValueName, sharpeningValue);
         }
     }
 }
