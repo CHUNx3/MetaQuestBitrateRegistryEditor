@@ -40,6 +40,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.perfHudOffBtn = new System.Windows.Forms.Button();
             this.perfHudOnBtn = new System.Windows.Forms.Button();
+            this.sharpeningComboBox = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // bitrateTextBox
@@ -85,7 +87,7 @@
             // restoreBtn
             // 
             this.restoreBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.restoreBtn.Location = new System.Drawing.Point(22, 416);
+            this.restoreBtn.Location = new System.Drawing.Point(24, 449);
             this.restoreBtn.Name = "restoreBtn";
             this.restoreBtn.Size = new System.Drawing.Size(544, 90);
             this.restoreBtn.TabIndex = 14;
@@ -96,7 +98,7 @@
             // aswOffBtn
             // 
             this.aswOffBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aswOffBtn.Location = new System.Drawing.Point(185, 341);
+            this.aswOffBtn.Location = new System.Drawing.Point(187, 387);
             this.aswOffBtn.Name = "aswOffBtn";
             this.aswOffBtn.Size = new System.Drawing.Size(230, 47);
             this.aswOffBtn.TabIndex = 15;
@@ -157,7 +159,7 @@
             // perfHudOffBtn
             // 
             this.perfHudOffBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.perfHudOffBtn.Location = new System.Drawing.Point(143, 265);
+            this.perfHudOffBtn.Location = new System.Drawing.Point(147, 323);
             this.perfHudOffBtn.Name = "perfHudOffBtn";
             this.perfHudOffBtn.Size = new System.Drawing.Size(145, 47);
             this.perfHudOffBtn.TabIndex = 19;
@@ -168,7 +170,7 @@
             // perfHudOnBtn
             // 
             this.perfHudOnBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.perfHudOnBtn.Location = new System.Drawing.Point(308, 265);
+            this.perfHudOnBtn.Location = new System.Drawing.Point(314, 323);
             this.perfHudOnBtn.Name = "perfHudOnBtn";
             this.perfHudOnBtn.Size = new System.Drawing.Size(145, 47);
             this.perfHudOnBtn.TabIndex = 20;
@@ -176,11 +178,36 @@
             this.perfHudOnBtn.UseVisualStyleBackColor = true;
             this.perfHudOnBtn.Click += new System.EventHandler(this.perfHudOnBtn_Click);
             // 
+            // sharpeningComboBox
+            // 
+            this.sharpeningComboBox.FormattingEnabled = true;
+            this.sharpeningComboBox.Items.AddRange(new object[] {
+            "Disabled",
+            "Normal",
+            "Quality"});
+            this.sharpeningComboBox.Location = new System.Drawing.Point(338, 249);
+            this.sharpeningComboBox.Name = "sharpeningComboBox";
+            this.sharpeningComboBox.Size = new System.Drawing.Size(121, 26);
+            this.sharpeningComboBox.TabIndex = 21;
+            this.sharpeningComboBox.SelectedIndexChanged += new System.EventHandler(this.sharpeningComboBox_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label5.Location = new System.Drawing.Point(220, 244);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(112, 28);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Sharpening";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(597, 551);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.sharpeningComboBox);
             this.Controls.Add(this.perfHudOnBtn);
             this.Controls.Add(this.perfHudOffBtn);
             this.Controls.Add(this.label4);
@@ -216,6 +243,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button perfHudOffBtn;
         private System.Windows.Forms.Button perfHudOnBtn;
+        private System.Windows.Forms.ComboBox sharpeningComboBox;
+        private System.Windows.Forms.Label label5;
     }
 }
 
