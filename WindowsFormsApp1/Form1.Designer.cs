@@ -221,7 +221,7 @@
             this.Controls.Add(this.dbmTextBox);
             this.Controls.Add(this.bitrateTextBox);
             this.Name = "Form1";
-            this.Text = "Meta Quest Bitrate Registry Editor 0.2.0";
+            this.Text = "Meta Quest Bitrate Registry Editor 0.2.1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Click += new System.EventHandler(this.Form1_Click);
             this.ResumeLayout(false);
